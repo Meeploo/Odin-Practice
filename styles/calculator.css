@@ -19,6 +19,13 @@
   border-radius: inherit;
 }
 
+td {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-align: center;
+  background-color: silver;
+  border-radius: 20px;
+}
+
 .line {
   text-align: right;
   margin: 0;
@@ -34,14 +41,11 @@
   border-width: 0px;
   border-color: aqua;
   border-style: solid;
-  flex: auto;
 }
 
 .button-row {
   display: flex;
 }
-
-.button
 
 .flex-single {
   flex: 1 1 auto;
