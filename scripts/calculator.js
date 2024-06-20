@@ -1,5 +1,3 @@
-console.log("fuck")
-
 const OPERATORS = ['+','-','*','/'];
 
 const linePrevious = document.querySelector("#previousOperation");
@@ -11,14 +9,26 @@ const operands = {
     adderSecond: document.querySelector("#adderSecond")
 }
 
+function getOperands(){
+    return {
+        _adderFirst: operands.adderFirst.innerHTML,
+        _operator: operands.operator.innerHTML,
+        _adderSecond: operands.adderSecond.innerHTML
+    };
+}
+
+function setOperands(newOperands=["","",""]){
+    operands.adderFirst.innerHTML = newOperands[0];
+    operands.operator.innerHTML = newOperands[1];
+    operands.adderSecond.innerHTML = newOperands[2];
+}
+
 function clearCalculator(){
     if (operands.adderSecond.innerHTML == "" && operands.operator.innerHTML == "" && operands.adderSecond.innerHTML == ""){
         linePrevious.innerHTML = "";
         resultPrevious.innerHTML = "";
     }
-    operands.adderFirst.innerHTML = "";
-    operands.adderSecond.innerHTML = "";
-    operands.operator.innerHTML = "";
+    setOperands();
 }
 
 function evalCalculator(){
@@ -41,29 +51,45 @@ function evalCalculator(){
         default:
             break;
     }
-    clearCalculator();
 }
 
 function handleButtonPress(operandIn) {
+    const calcLine = getOperands();
     if (operandIn == "C"){
         clearCalculator();
     }
     else if (operandIn == "="){
         evalCalculator();
+        clearCalculator();
     }
     else if (OPERATORS.includes(operandIn)){
-        if (operands.adderSecond.innerHTML != ""){
-            operands.adderFirst.innerHTML = operands.adderSecond.innerHTML;
-            operands.adderSecond.innerHTML = "";
-            operands.operator.innerHTML = operandIn;
+        if (calcLine._adderSecond != ""){
+            if (calcLine._adderFirst != ""){
+                evalCalculator();
+                setOperands([
+                    resultPrevious.innerHTML,
+                    operandIn,
+                    ""
+                ])
+            }
+            else{
+                setOperands([
+                    calcLine._adderSecond,
+                    operandIn,
+                    ""
+                ])
+            }
         }
         else if (resultPrevious.innerHTML != ""){
-            operands.adderFirst.innerHTML = resultPrevious.innerHTML;
-            operands.operator.innerHTML = operandIn;
+            setOperands([
+                resultPrevious.innerHTML,
+                operandIn,
+                ""
+            ])
         }
     }
     else {
-        operands.adderSecond.innerHTML = operands.adderSecond.innerHTML.concat(operandIn);
+        operands.adderSecond.innerHTML = calcLine._adderSecond.concat(operandIn);
     }
 }
 
