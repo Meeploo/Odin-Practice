@@ -24,6 +24,7 @@ td {
   text-align: center;
   background-color: silver;
   border-radius: 20px;
+  height: 24px;
 }
 
 .line {
@@ -33,6 +34,10 @@ td {
   display: flex;
   justify-content: right;
   gap: 10px;
+  height: 24px;
+  font-size: 22px;
+  font-family: monospace;
+  word-wrap: normal;
 }
 
 .button-panel, .button-row, .button-div {

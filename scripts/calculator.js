@@ -37,7 +37,7 @@ function evalCalculator(){
     const floatB = parseFloat(operands.adderSecond.innerHTML);
     switch (operands.operator.innerHTML) {
         case "/":
-            resultPrevious.innerHTML = floatA/floatB;
+            resultPrevious.innerHTML = Math.round(100*floatA/floatB)/100;
             break;
         case "*":
             resultPrevious.innerHTML = floatA*floatB;
@@ -49,6 +49,7 @@ function evalCalculator(){
             resultPrevious.innerHTML = floatA-floatB;
             break;
         default:
+            resultPrevious.innerHTML = floatB;
             break;
     }
 }
@@ -59,36 +60,52 @@ function handleButtonPress(operandIn) {
         clearCalculator();
     }
     else if (operandIn == "="){
-        evalCalculator();
-        clearCalculator();
+        if (calcLine._adderSecond != ""){
+            evalCalculator();
+            clearCalculator();
+        }
+    }
+    else if (operandIn == "."){
+        if (!calcLine._adderSecond.includes(".")){
+            operands.adderSecond.innerHTML = calcLine._adderSecond.concat(operandIn);
+        }
     }
     else if (OPERATORS.includes(operandIn)){
-        if (calcLine._adderSecond != ""){
-            if (calcLine._adderFirst != ""){
-                evalCalculator();
+        if (calcLine._operator == ""){
+            if (calcLine._adderSecond != ""){
+                if (calcLine._adderFirst != ""){
+                    evalCalculator();
+                    setOperands([
+                        resultPrevious.innerHTML,
+                        operandIn,
+                        ""
+                    ])
+                }
+                else{
+                    setOperands([
+                        calcLine._adderSecond,
+                        operandIn,
+                        ""
+                    ])
+                }
+            }
+            else if (resultPrevious.innerHTML != ""){
                 setOperands([
                     resultPrevious.innerHTML,
                     operandIn,
                     ""
                 ])
             }
-            else{
-                setOperands([
-                    calcLine._adderSecond,
-                    operandIn,
-                    ""
-                ])
-            }
         }
-        else if (resultPrevious.innerHTML != ""){
+        else if (operandIn == "-"){
             setOperands([
-                resultPrevious.innerHTML,
-                operandIn,
-                ""
+                calcLine._adderFirst,
+                calcLine._operator,
+                operandIn
             ])
         }
     }
-    else {
+    else{
         operands.adderSecond.innerHTML = calcLine._adderSecond.concat(operandIn);
     }
 }
