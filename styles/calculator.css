@@ -9,22 +9,51 @@
   padding: 20px;
   max-width: 800px;
   margin: auto;
-  background-color: darkslategrey;
+  background-color: #2a2e41;
   border-radius: 20px;
 }
 
 .screen {
   min-width: 0;
-  background-color: darkgreen;
+  background-color: #3a405a;
   border-radius: inherit;
+  color: aliceblue;
 }
 
 td {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-align: center;
-  background-color: silver;
+  background-color: #b9c0da;
   border-radius: 20px;
-  height: 24px;
+  height: 48px;
+}
+
+td:active {
+  background-color: #6f7eb3;
+}
+
+.operator {
+  background-color: #ffba49;
+}
+
+.operator:active {
+  background-color: #eb9100;
+}
+
+.clear {
+  background-color: #ef5b5b;
+}
+
+.clear:active {
+  background-color: #d91515;
+}
+
+.equals {
+  background-color: #8fe388;
+}
+
+.equals:active {
+  background-color: #42d035;
 }
 
 .line {

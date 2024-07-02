@@ -37,7 +37,12 @@ function evalCalculator(){
     const floatB = parseFloat(operands.adderSecond.innerHTML);
     switch (operands.operator.innerHTML) {
         case "/":
-            resultPrevious.innerHTML = Math.round(100*floatA/floatB)/100;
+            if (floatB == 0){
+                resultPrevious.innerHTML = "NO!";
+            }
+            else {
+                resultPrevious.innerHTML = Math.round(100*floatA/floatB)/100;
+            }
             break;
         case "*":
             resultPrevious.innerHTML = floatA*floatB;
