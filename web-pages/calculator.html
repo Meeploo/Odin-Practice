@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/calculator.css" />
+    <script src="../scripts/calculator.js" defer></script>
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="calculator-body">
+        <div class="screen">
+            <div class="line">
+                <div id="previousOperation">
+                    1 + 1 = 
+                </div>
+                <div id="previousResult">
+                    2
+                </div>
+            </div>
+            <div class="line">
+                <div id="adderFirst"></div>
+                <div id="operator"></div>
+                <div id="adderSecond"></div>
+            </div>
+        </div>
+        <div class="button-panel">
+            <table style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <td class="clear">C</td>
+                        <td class="operator">/</td>
+                        <td class="operator">*</td>
+                        <td class="operator">-</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td class="operator" rowspan="2">+</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td class="equals" rowspan="2">=</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">0</td>
+                        <td>.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
